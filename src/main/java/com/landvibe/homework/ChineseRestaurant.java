@@ -63,6 +63,7 @@ public class ChineseRestaurant {
             System.out.println("\n무엇을 할까요?");
             what = scanner.nextLine();
         }
+        scanner.close();
     }
 }
 class Customer{
