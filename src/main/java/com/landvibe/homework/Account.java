@@ -25,15 +25,15 @@ public class Account {
         this.account = account;
     }
 
-    public void printAccount(){
+    public void printAccount() {
         System.out.println(this.getOwner() + "님의 잔고 : " + this.getAccount() + "원\n");
     }
 
-    public boolean withdrawIfPossible(int price){
-        if(this.account < price){
-            return false;
-        }
+    public boolean isPossibleToWithdraw(int price) {
+        return this.account >= price ? true : false;
+    }
+
+    public void withdraw(int price){
         this.account -= price;
-        return true;
     }
 }

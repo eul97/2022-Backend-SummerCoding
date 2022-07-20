@@ -1,23 +1,21 @@
 package com.landvibe.homework;
 
-import java.util.List;
-
 public class Menu {
     private String name;
-    private int orderNumber, price;
+    private int menuNumber, price;
 
-    public Menu(int orderNumber, String name, int price) {
-        this.orderNumber = orderNumber;
+    public Menu(int menuNumber, String name, int price) {
+        this.menuNumber = menuNumber;
         this.name = name;
         this.price = price;
     }
 
-    public int getOrderNumber() {
-        return orderNumber;
+    public int getMenuNumber() {
+        return menuNumber;
     }
 
-    public void setOrderNumber(int orderNumber) {
-        this.orderNumber = orderNumber;
+    public void setMenuNumber(int menuNumber) {
+        this.menuNumber = menuNumber;
     }
 
     public String getName() {
@@ -34,5 +32,9 @@ public class Menu {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public boolean isSameMenu(String numOrName){
+        return (Integer.toString(this.menuNumber).equals(numOrName) || this.name.equals(numOrName)) ? true : false;
     }
 }
