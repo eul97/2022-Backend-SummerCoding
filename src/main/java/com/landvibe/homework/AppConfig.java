@@ -14,21 +14,12 @@ import com.landvibe.homework.service.impl.OrderServiceImpl;
 import com.landvibe.homework.service.impl.UserServiceImpl;
 
 public class AppConfig {
-    private final MenuRepository menuRepository;
-    private final OrderRepository orderRepository;
-    private final UserRepository userRepository;
-    private final MenuService menuService;
-    private final OrderService orderService;
-    private final UserService userService;
-
-    public AppConfig() {
-        this.menuRepository = new MemoryMenuRepository();
-        this.orderRepository = new MemoryOrderRepository();
-        this.userRepository = new MemoryUserRepository();
-        this.menuService = new MenuServiceImpl(menuRepository);
-        this.orderService = new OrderServiceImpl(orderRepository, menuRepository);
-        this.userService = new UserServiceImpl(userRepository);
-    }
+    private static final MenuRepository menuRepository = new MemoryMenuRepository();
+    private static final OrderRepository orderRepository = new MemoryOrderRepository();
+    private static final UserRepository userRepository = new MemoryUserRepository();
+    private static final MenuService menuService = new MenuServiceImpl(menuRepository);
+    private static final OrderService orderService = new OrderServiceImpl(orderRepository,menuRepository);
+    private static final UserService userService = new UserServiceImpl(userRepository);
 
     public MenuRepository getMenuRepository() {
         return menuRepository;

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MemoryMenuRepository implements MenuRepository {
-    private final static Map<Long, Menu> store = new HashMap<>();
+    private static final Map<Long, Menu> store = new HashMap<>();
 
     @Override
     public void save(Menu menu) {
@@ -30,7 +30,7 @@ public class MemoryMenuRepository implements MenuRepository {
     }
 
     @Override
-    public List<Menu> findAllMenu() {
+    public List<Menu> findAll() {
         return new ArrayList<>(store.values());
     }
 

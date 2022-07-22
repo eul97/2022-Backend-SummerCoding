@@ -13,5 +13,5 @@ public interface MenuRepository {
 
     Menu findByName(String menuName);
 
-    List<Menu> findAllMenu();
+    List<Menu> findAll();
 }

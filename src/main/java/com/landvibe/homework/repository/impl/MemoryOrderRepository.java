@@ -18,7 +18,7 @@ public class MemoryOrderRepository implements OrderRepository {
     }
 
     @Override
-    public List<Order> findAllOrders() {
+    public List<Order> findAll() {
         return new ArrayList<>(store.values());
     }
 

@@ -22,10 +22,20 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public void printAllMenu() {
-        List<Menu> menuList = menuRepository.findAllMenu();
+        List<Menu> menuList = menuRepository.findAll();
         for (Menu menu : menuList) {
             System.out.println(menu.toString());
         }
         System.out.println();
+    }
+
+    @Override
+    public Menu findMenu(String menuName) {
+        if (Character.isDigit(menuName.charAt(0))) {
+            Long menuId = Long.parseLong(menuName);
+            return menuRepository.findById(menuId);
+        } else {
+            return menuRepository.findByName(menuName);
+        }
     }
 }

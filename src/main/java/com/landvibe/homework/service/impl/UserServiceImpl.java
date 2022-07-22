@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void createUser(String name, int credit) {
-        if (userRepository.checkExistName(name)) {
+        if (userRepository.findByName(name) != null) {
             System.out.println("유저 생성 실패 - 이미 존재하는 이름입니다!! \n");
             return;
         }
@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void printUserList() {
-        List<User> userList = userRepository.findAllUser();
+        List<User> userList = userRepository.findAll();
         for (User user : userList) {
             System.out.println(user.toString());
         }

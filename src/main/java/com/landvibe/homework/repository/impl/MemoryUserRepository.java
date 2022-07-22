@@ -37,16 +37,7 @@ public class MemoryUserRepository implements UserRepository {
     }
 
     @Override
-    public boolean checkExistName(String userName) {
-        for (User user : store.values()) {
-            if (user.getName().equals(userName))
-                return true;
-        }
-        return false;
-    }
-
-    @Override
-    public List<User> findAllUser() {
+    public List<User> findAll() {
         return new ArrayList<>(store.values());
     }
 }

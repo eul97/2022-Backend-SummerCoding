@@ -58,7 +58,7 @@ public class User {
         return "이름 : " + name + "\n잔액 : " + credit;
     }
 
-    public void order(Order order) {
+    public void addOrder(Order order) {
         orderList.add(order);
         credit -= order.getMenu().getPrice();
     }

@@ -15,12 +15,10 @@ public class HomeworkMain {
     private static final UserService userService = appconfig.getUserService();
     private static final OrderService orderService = appconfig.getOrderService();
     private static final MenuService menuService = appconfig.getMenuService();
-    private static User selectedUser;
 
     public static void main(String[] args) throws IOException {
         init();
         userOperation();
-
     }
 
     static void init() {
@@ -48,8 +46,7 @@ public class HomeworkMain {
                 if (user == null) {
                     System.out.println("존재하지 않는 유저입니다\n");
                 } else {
-                    selectedUser = user;
-                    menuOperation();
+                    menuOperation(user);
                 }
             } else if (op == 2) {
                 userService.printUserList();
@@ -62,11 +59,13 @@ public class HomeworkMain {
             } else if (op == 4) {
                 System.out.println("안녕히가세요 ~");
                 return;
+            } else {
+                System.out.println("ERROR : 1에서 4사이의 수를 입력해 주세요\n");
             }
         }
     }
 
-    static void menuOperation() throws IOException {
+    static void menuOperation(User user) throws IOException {
         while (true) {
             System.out.println("무엇을 할까요 ?");
             System.out.println("1. 메뉴판 보기");
@@ -76,29 +75,26 @@ public class HomeworkMain {
             System.out.println("5. 내 잔고 보기");
             System.out.println("6. 돈벌기");
             System.out.println("7. 유저 선택 화면으로");
-            String op = bf.readLine();
-            if (op.equals("메뉴판 보기")) {
+
+            int cmd = Integer.parseInt(bf.readLine());
+            if (cmd == 1) {
                 menuService.printAllMenu();
-            } else if (op.equals("주문하기")) {
+            } else if (cmd == 2) {
                 System.out.println("어떤 메뉴를 주문하시겠습니까? 주문번호 혹은 메뉴명을 적어주세요");
                 String menuName = bf.readLine();
-                if (Character.isDigit(menuName.charAt(0))) {
-                    Long menuId = Long.parseLong(menuName);
-                    orderService.createOrder(selectedUser, menuId);
-                } else {
-                    orderService.createOrder(selectedUser, menuName);
-                }
-            } else if (op.equals("내 주문 내역 보기")) {
-                orderService.printOrderList(selectedUser);
-            } else if (op.equals("전체 주문 내역 보기")) {
+                orderService.createOrder(user, menuService.findMenu(menuName));
+            } else if (cmd == 3) {
+                orderService.printOrderList(user);
+            } else if (cmd == 4) {
                 orderService.printOrderList();
-            } else if (op.equals("내 잔고 보기")) {
-                userService.checkCredit(selectedUser);
-            } else if (op.equals("돈벌기")) {
+            } else if (cmd == 5) {
+                userService.checkCredit(user);
+            } else if (cmd == 6) {
                 System.out.println("얼마나 버시겠어요 ? 숫자를 입력해 주세요");
                 int value = Integer.parseInt(bf.readLine());
-                userService.earnCredit(selectedUser, value);
-            } else if (op.equals("유저 선택 화면으로")) {
+                userService.earnCredit(user, value);
+            } else if (cmd == 7) {
+                System.out.println("유저 선택 화면으로 이동합니다 \n");
                 return;
             } else {
                 System.out.println("올바르지 않은 입력입니다");

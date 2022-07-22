@@ -14,7 +14,5 @@ public interface UserRepository {
 
     Long getCount();
 
-    boolean checkExistName(String userName);
-
-    List<User> findAllUser();
+    List<User> findAll();
 }
