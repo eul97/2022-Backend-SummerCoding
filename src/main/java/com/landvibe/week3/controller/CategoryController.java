@@ -4,12 +4,11 @@ import com.landvibe.week3.dto.GetCategoryResDto;
 import com.landvibe.week3.dto.PostCategoryReqDto;
 import com.landvibe.week3.dto.PostCommonResDto;
 import com.landvibe.week3.service.CategoryService;
-import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RestController
 @RequestMapping(path = "/api")
 public class CategoryController {

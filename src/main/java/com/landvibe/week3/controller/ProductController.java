@@ -5,11 +5,11 @@ import com.landvibe.week3.dto.GetProductResDto;
 import com.landvibe.week3.dto.PostCommonResDto;
 import com.landvibe.week3.dto.PostProductReqDto;
 import com.landvibe.week3.service.ProductService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RestController
 @RequestMapping(path = "/api")
 public class ProductController {
